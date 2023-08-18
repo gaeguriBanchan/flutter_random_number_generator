@@ -42,19 +42,25 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       123,
                       456,
-                      789,
+                      156,
                     ]
+                        .asMap()
+                        .entries
                         .map(
-                          (x) => Row(
-                            children: x
-                                .toString()
-                                .split('')
-                                .map((y) => Image.asset(
-                                      'asset/img/$y.png',
-                                      height: 70.0,
-                                      width: 50.0,
-                                    ))
-                                .toList(),
+                          (x) => Padding(
+                            padding:
+                                EdgeInsets.only(bottom: x.key == 2 ? 0 : 16.0),
+                            child: Row(
+                              children: x.value
+                                  .toString()
+                                  .split('')
+                                  .map((y) => Image.asset(
+                                        'asset/img/$y.png',
+                                        height: 70.0,
+                                        width: 50.0,
+                                      ))
+                                  .toList(),
+                            ),
                           ),
                         )
                         .toList()),
